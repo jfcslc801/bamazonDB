@@ -22,13 +22,14 @@ connection.connect(function (err) {
 function runSearch() {
     connection.query("SELECT * FROM products", function (err, res) {
         if (err) throw err;
-        console.log("----------------------------------------------------------------------");
-        console.log("----------------------------------------------------------------------");
-
+        console.log("----------------------------------------------------------------------------------");
+        console.log("------------------------------------ BAMazon -------------------------------------");
+        console.log("----------------------------------------------------------------------------------");
         // consoles mySQL products from DB
         for (var i = 0; i < res.length; i++) {
+
             console.log("ID: " + res[i].id + " | " + "Product: " + res[i].product_name + " | " + "Department: " + res[i].department_name + " | " + "Price: " + res[i].price.toFixed(2) + " | " + "Stock: " + res[i].stock_quantity);
-            console.log("----------------------------------------------------------------------");
+            console.log("----------------------------------------------------------------------------------");
         }
         // prompts user for input on sale id and quantity
         inquirer
