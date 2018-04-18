@@ -27,6 +27,15 @@ week 12 we deployed an Amazon-like storefront using  MySQL. The app will take in
 - [MYSQL NPM Package](https://www.npmjs.com/package/mysql)
 
 
+# Demo Videos
+
+* bamazonCustomer.js (https://youtu.be/BeCyH7fwa-8)
+
+* bamazonManager.js (https://youtu.be/f-BSPHDvqFA)
+
+* bamazonExective.js (https://youtu.be)
+
+
 ### Prerequisites
 
 ```
