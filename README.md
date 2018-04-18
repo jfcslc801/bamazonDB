@@ -31,15 +31,16 @@ week 12 we deployed an Amazon-like storefront using  MySQL. The app will take in
 
 ```
 
-* Node.js
+- Node.js
 
-* MYSQL 
+- MYSQL 
 
 ```
 
 ## Built With
-
 * VS - Visual Code Studio - Text Editor
+* MySQLWorkbench
+* Terminal & Gitbash
 
 ## Authors
 * **Jaime Franco Cerritos** - *Node JS* - [Jaime Franco Cerritos](https://github.com/jfcslc801)
