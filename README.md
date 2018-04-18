@@ -30,8 +30,11 @@ week 12 we deployed an Amazon-like storefront using  MySQL. The app will take in
 ### Prerequisites
 
 ```
-Node.js
-MYSQL 
+
+* Node.js
+
+* MYSQL 
+
 ```
 
 ## Built With
