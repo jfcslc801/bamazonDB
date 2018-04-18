@@ -1,0 +1,23 @@
+{
+  "name": "ls",
+  "version": "1.0.0",
+  "description": "bamazon",
+  "main": "bamazonCustomer.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jfcslc801/bamazonDB.git"
+  },
+  "author": "jfcslc801",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jfcslc801/bamazonDB/issues"
+  },
+  "homepage": "https://github.com/jfcslc801/bamazonDB#readme",
+  "dependencies": {
+    "mysql": "^2.15.0",
+    "require": "^2.4.20"
+  }
+}

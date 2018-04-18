@@ -7,29 +7,31 @@ week 12 we deployed an Amazon-like storefront using  MySQL. The app will take in
 
 # Getting Started
 
-* Clone repo.
-
-* Run command in Terminal or Gitbash 'npm install'
-
-* Run command depending which mode you would like to be on:
+- Clone repo.
+- 'npm init -y'
+- 'npm install mysql --save'
+- 'npm install require --save'
+- Run followinf commands depending which mode you would like to be on in gitbash:
+    * Customer - 'node bamazonCustomer.js'
+    * Manager - 'node bamazonManager.js'
+    * Exective - 'node  bamazonExective.js'
+- 'ctrl + c' to exit each mode
 
 
 ## Technologies used
 
-* Node.js
+- Node.js
 
-* Inquire NPM Package (https://www.npmjs.com/package/inquirer)
+- [Inquire NPM Package] (https://www.npmjs.com/package/inquirer)
 
-* MYSQL NPM Package (https://www.npmjs.com/package/mysql)
-
+- [MYSQL NPM Package] (https://www.npmjs.com/package/mysql)
 
 
 ### Prerequisites
 
 ```
-Node.js - https://nodejs.org/en/
-
-MYSQL database called 'Bamazon
+Node.js  (https://nodejs.org/en/)
+MYSQL database called 'Bamazon'
 ```
 
 ## Built With
