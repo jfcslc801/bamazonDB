@@ -52,4 +52,4 @@ week 12 we deployed an Amazon-like storefront using  MySQL. The app will take in
 * Terminal & Gitbash
 
 ## Authors
-* **Jaime Franco Cerritos** - [Jaime Franco Cerritos](https://github.com/jfcslc801)
+* [**Jaime Franco Cerritos** ][Jaime Franco Cerritos](https://github.com/jfcslc801)
