@@ -117,7 +117,9 @@ function addToInventory() {
                 { product_name: ans.product }
             ], function (err, res) {
                 if (err) throw err;
+                console.log("\n");                
                 console.log('The quantity was updated.');
+                console.log("\n");                
                 runSearch();
             });
         })
@@ -181,13 +183,11 @@ function addNewProduct() {
             stock_quantity: ans.quantity
         }, function (err, res) {
             if (err) throw err;
+            console.log("\n");
             console.log('Inventory Added Successfully!');
+            console.log("\n");            
         })
-        console.log("");
         runSearch();
-        console.log("");
-        console.log("");
-        
     });
 }
 
