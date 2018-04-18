@@ -20,7 +20,7 @@ week 12 we deployed an Amazon-like storefront using  MySQL. The app will take in
 
 ## Technologies used
 
-- Node.js
+- [Node.js](https://nodejs.org/en/)
 
 - [Inquire NPM Package](https://www.npmjs.com/package/inquirer)
 
@@ -30,8 +30,8 @@ week 12 we deployed an Amazon-like storefront using  MySQL. The app will take in
 ### Prerequisites
 
 ```
-Node.js  (https://nodejs.org/en/)
-MYSQL database called 'Bamazon'
+Node.js
+MYSQL 
 ```
 
 ## Built With
