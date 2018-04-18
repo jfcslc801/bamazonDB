@@ -83,14 +83,7 @@ function runSearch() {
                             }
                         }
 
-                        // //updates totalSales in departments table
-                        // connection.query("UPDATE Department SET ? WHERE ?", [
-                        //     { TotalSales: department_name_res[index].TotalSales + allPurchases },
-                        //     { department_name: res[purchase].department_name }
-                        // ], function (err, department_name) {
-                        //     if (err) throw err;
-                        //     console.log("Updated Dept Sales.");
-                        // });
+
                     });
 
                 } else {
@@ -114,7 +107,7 @@ function reprompt() {
         if (ans.reply) {
             runSearch();
         } else {
-            console.log("See you soon!");
+            console.log("Thank you, Come again.");
         }
     });
 }
