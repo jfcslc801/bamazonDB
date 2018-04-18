@@ -1,7 +1,7 @@
 # BAMazon
+
 University of Utah Coding Bootcamp.  
 
----
 # Overview
 week 12 we deployed an Amazon-like storefront using  MySQL. The app will take in orders from customers and deplete stock from the store's inventory.
 
