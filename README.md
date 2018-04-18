@@ -22,9 +22,9 @@ week 12 we deployed an Amazon-like storefront using  MySQL. The app will take in
 
 - Node.js
 
-- [Inquire NPM Package] (https://www.npmjs.com/package/inquirer)
+- [Inquire NPM Package](https://www.npmjs.com/package/inquirer)
 
-- [MYSQL NPM Package] (https://www.npmjs.com/package/mysql)
+- [MYSQL NPM Package](https://www.npmjs.com/package/mysql)
 
 
 ### Prerequisites
