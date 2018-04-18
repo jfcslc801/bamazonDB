@@ -29,10 +29,9 @@ week 12 we deployed an Amazon-like storefront using  MySQL. The app will take in
 
 # Demo Videos
 
-* [bamazonCustomer.js](https://youtu.be/BeCyH7fwa-8)
-
-* [bamazonManager.js](https://youtu.be/f-BSPHDvqFA)
-
+* [bamazonCustomer.js](https://youtu.be/dsoZkTrqCTk)
+* [bamazonManager.js PT1](https://youtu.be/RKHKtQuwiRQ)
+* [bamazonManager.js PT2](https://youtu.be/xUZ1q1PXf9k)
 * [bamazonExective.js](https://youtu.be)
 
 

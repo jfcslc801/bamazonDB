@@ -70,22 +70,30 @@ function runSearch() {
                     connection.query("UPDATE products SET ? WHERE ?", [
                         { stock_quantity: (res[purchase].stock_quantity - qtyBought) },
                         { id: answer.saleId }
-                    ], function (err, res) {
+                    ], function (err, result) {
                         if (err) throw err;
                         console.log("Your total is $" + allPurchases.toFixed(2) + ". Your item's will ship to you in 3-5 business days.");
                     });
 
-                    connection.query("SELECT * FROM products", function (err, department_name_res) {
+                    connection.query("SELECT * FROM products", function (err, res) {
                         if (err) throw err;
-                        var index;
-                        for (var i = 0; i < department_name_res.length; i++) {
-                            if (department_name_res[i].department_name === res[purchase].department_name) {
-                                index = i;
+                       
+                        for (var i = 0; i < res.length; i++) {
+                            if (res[i].department_name === res[purchase].department_name) {
                             }
                         }
 
 
                     });
+                    //updates totalSales in products table    var allPurchases = parseFloat(((res[purchase].price) * qtyBought).toFixed(2));
+                    connection.query("UPDATE products SET ? WHERE ?", [
+                        {product_sales: (res[purchase].price * qtyBought).toFixed(2)},
+                        {department_name: res[purchase].department_name}
+                    ], function (err, res) {
+                        if (err) throw err;
+                        console.log("Updated Dept Sales.");
+                    });
+
 
                 } else {
                     console.log("Sorry, Insufficient quantity!");
