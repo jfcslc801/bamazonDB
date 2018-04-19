@@ -5,39 +5,51 @@ var connection = mysql.createConnection({
     host: "localhost",
     port: 3306,
 
-    // Your username
+    //Username
     user: "root",
 
-    // Your password
+    //Password
     password: "cangetin",
     database: "bamazonDB"
 });
 
+// **********************************************************************************************************
+// CONNECTION 
+// **********************************************************************************************************
 connection.connect(function (err) {
     if (err) throw err;
     console.log("connected as id " + connection.threadId);
 });
 
 
+
+// **********************************************************************************************************
+// FUNCTION  
+// **********************************************************************************************************
 function runSearch() {
+    // Display all of the items available for sale: ids, names, and prices of products for sale.
     connection.query("SELECT * FROM products", function (err, res) {
         if (err) throw err;
+
+        console.log("----------------------------------------------------------------------------------");
         console.log("----------------------------------------------------------------------------------");
         console.log("------------------------------------ BAMazon -------------------------------------");
         console.log("----------------------------------------------------------------------------------");
-        // consoles mySQL products from DB
-        for (var i = 0; i < res.length; i++) {
+        console.log("----------------------------------------------------------------------------------");
 
+        for (var i = 0; i < res.length; i++) {
             console.log("ID: " + res[i].id + " | " + "Product: " + res[i].product_name + " | " + "Department: " + res[i].department_name + " | " + "Price: " + res[i].price.toFixed(2) + " | " + "Stock: " + res[i].stock_quantity);
             console.log("----------------------------------------------------------------------------------");
         }
         // prompts user for input on sale id and quantity
+        console.log("----------------------------------------------------------------------------------");
+        console.log("----------------------------------------------------------------------------------");
         inquirer
             .prompt([
                 {
                     name: "saleId",
                     type: "input",
-                    message: "Welcome: ENTER PRODUCT ID TO BEGIN SHOPPING.",
+                    message: "Enter Product ID to continue----------------------------------------------------",
                     validate: function (value) {
                         if (isNaN(value) === false && parseInt(value) <= res.length && parseInt(value) > 0) {
                             return true;
@@ -48,7 +60,7 @@ function runSearch() {
                 {
                     name: "itemQty",
                     type: "input",
-                    message: "Please: ENTER THE QUANTITY FOR THE ITEM YOU ARE PURCHASING.",
+                    message: "Enter Product QTY to continue---------------------------------------------------",
                     validate: function (value) {
                         if (isNaN(value)) {
                             return false;
@@ -72,10 +84,18 @@ function runSearch() {
                         { id: answer.saleId }
                     ], function (err, result) {
                         if (err) throw err;
-                        console.log("\n");
-                        console.log("---------------THANK YOU----------------------");
-                        console.log("SUB TOTAL: $" + allPurchases.toFixed(2) + ".");
-                        console.log("YOUR ITEMS WILL SHIP IN 3-5 BUSINESS DAYS.");
+                        console.log("----------------------------------------------");
+                        console.log("----------------------------------------------");
+                        console.log("-----------------BAMazom----------------------");
+                        console.log("*           135 M St, SLC, UTAH              *");
+                        console.log("*              801-867-5309                  *"); 
+                        console.log("*                                            *");
+                        console.log("* SUB TOTAL: $" + allPurchases.toFixed(2) + "                          *");
+                        console.log("*                                            *");
+                        console.log("* Ships in 3-5 BUSINESS DAYS.                *");                        
+                        console.log("----------------------------------------------");
+                        console.log("----------------------------------------------");
+                        
                     });
 
                     connection.query("SELECT * FROM products", function (err, res) {
@@ -94,16 +114,21 @@ function runSearch() {
                         { department_name: res[purchase].department_name }
                     ], function (err, res) {
                         if (err) throw err;
-                        console.log("-PRESS ENTER TO CONTINUE----------------------");
-                        console.log("-OR-----CTRL + C TO EXIT----------------------");
+
+                        reprompt();
+
                     });
 
 
                 } else {
-                    console.log("Sorry, Insufficient quantity!");
+                    console.log("----------------------------------------------------------------------------------");
+                    console.log("------------------------Sorry, Insufficient quantity!-----------------------------");
+                    console.log("----------------------------------------------------------------------------------");
+
+                    reprompt();
+
 
                 }
-                reprompt();
 
             });
 
@@ -116,12 +141,14 @@ function reprompt() {
     inquirer.prompt([{
         type: "confirm",
         name: "reply",
-        message: "Would you like to purchase another item?"
+        message: "Would you like to purchase another item?----------------------------------------",
     }]).then(function (ans) {
         if (ans.reply) {
             runSearch();
         } else {
-            console.log("Thank you, Come again.");
+            console.log("----------------------------------------------------------------------------------");
+            console.log("------------------------------Thank You, Come Again!------------------------------");
+            console.log("----------------------------------------------------------------------------------");
         }
     });
 }
