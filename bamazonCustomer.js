@@ -37,7 +37,7 @@ function runSearch() {
                 {
                     name: "saleId",
                     type: "input",
-                    message: "What is the item ID?",
+                    message: "Welcome: ENTER PRODUCT ID TO BEGIN SHOPPING.",
                     validate: function (value) {
                         if (isNaN(value) === false && parseInt(value) <= res.length && parseInt(value) > 0) {
                             return true;
@@ -48,7 +48,7 @@ function runSearch() {
                 {
                     name: "itemQty",
                     type: "input",
-                    message: "provide qty?",
+                    message: "Please: ENTER THE QUANTITY FOR THE ITEM YOU ARE PURCHASING.",
                     validate: function (value) {
                         if (isNaN(value)) {
                             return false;
@@ -72,12 +72,15 @@ function runSearch() {
                         { id: answer.saleId }
                     ], function (err, result) {
                         if (err) throw err;
-                        console.log("Your total is $" + allPurchases.toFixed(2) + ". Your item's will ship to you in 3-5 business days.");
+                        console.log("\n");
+                        console.log("---------------THANK YOU----------------------");
+                        console.log("SUB TOTAL: $" + allPurchases.toFixed(2) + ".");
+                        console.log("YOUR ITEMS WILL SHIP IN 3-5 BUSINESS DAYS.");
                     });
 
                     connection.query("SELECT * FROM products", function (err, res) {
                         if (err) throw err;
-                       
+
                         for (var i = 0; i < res.length; i++) {
                             if (res[i].department_name === res[purchase].department_name) {
                             }
@@ -87,11 +90,12 @@ function runSearch() {
                     });
                     //updates totalSales in products table    var allPurchases = parseFloat(((res[purchase].price) * qtyBought).toFixed(2));
                     connection.query("UPDATE products SET ? WHERE ?", [
-                        {product_sales: (res[purchase].price * qtyBought).toFixed(2)},
-                        {department_name: res[purchase].department_name}
+                        { product_sales: (res[purchase].price * qtyBought).toFixed(2) },
+                        { department_name: res[purchase].department_name }
                     ], function (err, res) {
                         if (err) throw err;
-                        console.log("Updated Dept Sales.");
+                        console.log("-PRESS ENTER TO CONTINUE----------------------");
+                        console.log("-OR-----CTRL + C TO EXIT----------------------");
                     });
 
 
@@ -100,6 +104,7 @@ function runSearch() {
 
                 }
                 reprompt();
+
             });
 
     });
