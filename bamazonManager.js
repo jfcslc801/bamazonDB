@@ -34,7 +34,7 @@ function runSearch() {
                 break;
             case "Add New Product": addNewProduct();
                 break;
-            case "End Session": console.log('CTRL + C to end session');
+            case "End Session": console.log("-----------------------------CTRL + C to End Session-----------------------------");
         }
     });
 }
@@ -53,6 +53,8 @@ function viewProducts() {
             console.log("----------------------------------------------------------------------------------");
 
         }
+        console.log("------------------------------- Products for Sale --------------------------------");
+        console.log("----------------------------------------------------------------------------------");
         runSearch();
     });
 }
@@ -70,19 +72,42 @@ function viewLowInventory() {
                 // console.log("--------------------------- Low Inventory ----------------------------");
                 console.log("ID: " + res[i].id + " | " + "Product: " + res[i].product_name + " | " + "Department: " + res[i].department_name + " | " + "Price: " + res[i].price.toFixed(2) + " | " + "Stock: " + res[i].stock_quantity);
                 console.log("----------------------------------------------------------------------------------");
-            }
-        }
 
+            }
+
+        }
+        console.log("------------------------ Displaying Items Lower Than Five ------------------------");        
+        console.log("----------------------------------------------------------------------------------");
         runSearch();
     });
 }
 
+
+function viewAddLowInventory() {
+    connection.query('SELECT * FROM Products', function (err, res) {
+        if (err) throw err;
+        for (var i = 0; i < res.length; i++) {
+            if (res[i].stock_quantity <= 5) {
+                // console.log("--------------------------- Low Inventory ----------------------------");
+                console.log("ID: " + res[i].id + " | " + "Product: " + res[i].product_name + " | " + "Department: " + res[i].department_name + " | " + "Price: " + res[i].price.toFixed(2) + " | " + "Stock: " + res[i].stock_quantity);
+                console.log("----------------------------------------------------------------------------------");
+
+            }
+
+        }
+        console.log("------------------------ Displaying Items Lower Than Five ------------------------");
+        console.log("----------------------------------------------------------------------------------");
+
+    });
+}
 
 // display a prompt that will let the manager "add more" of any item currently in the store...................................................................
 function addToInventory() {
     console.log("----------------------------------------------------------------------------------");
     console.log("--------------------------------- Add Inventory ----------------------------------");
     console.log("----------------------------------------------------------------------------------");
+    viewAddLowInventory();
+
 
     connection.query('SELECT * FROM Products', function (err, res) {
         if (err) throw err;
@@ -117,9 +142,9 @@ function addToInventory() {
                 { product_name: ans.product }
             ], function (err, res) {
                 if (err) throw err;
-                console.log("\n");                
+                console.log("\n");
                 console.log('The quantity was updated.');
-                console.log("\n");                
+                console.log("\n");
                 runSearch();
             });
         })
@@ -185,7 +210,7 @@ function addNewProduct() {
             if (err) throw err;
             console.log("\n");
             console.log('Inventory Added Successfully!');
-            console.log("\n");            
+            console.log("\n");
         })
         runSearch();
     });
