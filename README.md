@@ -33,8 +33,6 @@ week 12 we deployed an Amazon-like storefront using  MySQL. The app will take in
 * [bamazonManager.js PT1](https://youtu.be/RKHKtQuwiRQ)
 * [bamazonManager.js PT2](https://youtu.be/xUZ1q1PXf9k)
 * [bamazonExective.js](https://youtu.be)
-
-
 ### Prerequisites
 
 ```
