@@ -173,11 +173,8 @@ function addNewProduct() {
             if (value) { return true; }
             else { return false; }
         }
-    }, {
-        type: "input",
-        name: "id",
-        message: "id:"
-    }, {
+    }, 
+     {
         type: "list",
         name: "department",
         message: "Department: ",

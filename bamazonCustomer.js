@@ -78,62 +78,57 @@ function runSearch() {
 
                 //check if quantity is sufficient
                 if (res[purchase].stock_quantity >= qtyBought) {
-                    //after purchase, updates quantity in Products
                     connection.query("UPDATE products SET ? WHERE ?", [
                         { stock_quantity: (res[purchase].stock_quantity - qtyBought) },
                         { id: answer.saleId }
                     ], function (err, result) {
                         if (err) throw err;
-                        console.log("----------------------------------------------");
-                        console.log("----------------------------------------------");
-                        console.log("-----------------BAMazom----------------------");
-                        console.log("*           135 M St, SLC, UTAH              *");
-                        console.log("*              801-867-5309                  *"); 
-                        console.log("*                                            *");
-                        console.log("* SUB TOTAL: $" + allPurchases.toFixed(2) + "                          *");
-                        console.log("*                                            *");
-                        console.log("* Ships in 3-5 BUSINESS DAYS.                *");                        
-                        console.log("----------------------------------------------");
-                        console.log("----------------------------------------------");
+                        console.log("----------------------------------------------------------------------------------");
+                        console.log("----------------------------------------------------------------------------------");
+                        console.log("-----------------------------------BAMazom----------------------------------------");
+                        console.log("------------------*           135 M St, SLC, UTAH              *------------------");
+                        console.log("------------------*              801-867-5309                  *------------------");
+                        console.log("------------------*                                            *------------------");
+                        console.log("------------------*                                            *------------------");
                         
+                        console.log("------------------* SUB TOTAL: $" + allPurchases.toFixed(2) + "                          *------------------");
+                        console.log("------------------* Ships in 3-5 BUSINESS DAYS.                *------------------");
+                        console.log("----------------------------------------------------------------------------------");
+                        console.log("----------------------------------------------------------------------------------");
+
                     });
 
-                    connection.query("SELECT * FROM products", function (err, res) {
+                    connection.query("SELECT * FROM products", function (err, prodSales) {
                         if (err) throw err;
-
-                        for (var i = 0; i < res.length; i++) {
-                            if (res[i].department_name === res[purchase].department_name) {
+                        var index;
+                        for (var i = 0; i < prodSales.length; i++) {
+                            if (prodSales[i].department_name === res[purchase].department_name) {
+                                index = i;
                             }
                         }
 
+                        connection.query("UPDATE products SET ? WHERE ?", [
+                            { product_sales: prodSales[index].product_sales + allPurchases },
+                            { department_name: res[purchase].department_name }
+                        ], function (err, prodSales) {
+                            if (err) throw err;
+                            console.log("Updated Dept Sales.");
+                            reprompt();
+
+                        });
 
                     });
-                    //updates totalSales in products table    var allPurchases = parseFloat(((res[purchase].price) * qtyBought).toFixed(2));
-                    connection.query("UPDATE products SET ? WHERE ?", [
-                        { product_sales: (res[purchase].price * qtyBought).toFixed(2) },
-                        { department_name: res[purchase].department_name }
-                    ], function (err, res) {
-                        if (err) throw err;
-
-                        reprompt();
-
-                    });
-
 
                 } else {
                     console.log("----------------------------------------------------------------------------------");
                     console.log("------------------------Sorry, Insufficient quantity!-----------------------------");
                     console.log("----------------------------------------------------------------------------------");
-
-                    reprompt();
-
-
+                    Ç
                 }
-
             });
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     });
-
 }
 
 
@@ -149,9 +144,9 @@ function reprompt() {
             console.log("----------------------------------------------------------------------------------");
             console.log("------------------------------Thank You, Come Again!------------------------------");
             console.log("----------------------------------------------------------------------------------");
+            
         }
     });
 }
 
 runSearch()
-
