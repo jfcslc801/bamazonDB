@@ -48,11 +48,8 @@ function viewProductsByDepartment() {
     //prints the items for sale and their details
     connection.query('SELECT * FROM Departments', function (err, res) {
         if (err) throw err;
-        console.log('>>>>>>Product Sales by Department<<<<<<');
-        console.log('----------------------------------------------------------------------------------------------------')
-
         for (var i = 0; i < res.length; i++) {
-            console.log("Department ID: " + res[i].DepartmentID + " | " + "Department Name: " + res[i].DepartmentName + " | " + "Over Head Cost: " + (res[i].OverHeadCosts).toFixed(2) + " | " + "Product Sales: " + (res[i].TotalSales).toFixed(2) + " | " + "Total Profit: " + (res[i].TotalSales - res[i].OverHeadCosts).toFixed(2));
+            console.log("Department ID: " + res[i].department_id + " | " + "Department Name: " + res[i].department_name + " | " + "Over Head Cost: " + (res[i].over_head_costs).toFixed(2) + " | " + "Product Sales: " + (res[i].TotalSales).toFixed(2) + " | " + "Total Profit: " + (res[i].TotalSales - res[i].OverHeadCosts).toFixed(2));
             console.log('--------------------------------------------------------------------------------------------------')
         }
         start();

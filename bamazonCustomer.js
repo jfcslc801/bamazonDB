@@ -73,9 +73,7 @@ function runSearch() {
             .then(function (answer) {
                 var purchase = (answer.saleId) - 1;
                 var qtyBought = parseInt(answer.itemQty);
-                var allPurchases = parseFloat(((res[purchase].price) * qtyBought).toFixed(2));
-
-
+                var allPurchases = parseFloat(((res[purchase].price) * qtyBought).toFixed(2));  
                 //check if quantity is sufficient
                 if (res[purchase].stock_quantity >= qtyBought) {
                     connection.query("UPDATE products SET ? WHERE ?", [
